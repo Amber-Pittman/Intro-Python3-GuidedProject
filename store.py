@@ -22,11 +22,12 @@ class Store:
     #self.employees = []
       
   def __str__(self):
-    # Stir will return a string representing the Store
+    # return a string representing the store
     output = f"Welcome to {self.name}!"
+    i = 1 
     for category in self.categories:
-      output += f"\n {category}"
-
+        output += f'\n {i}. {category.name}'
+        i += 1
     return output
 
   def __repr__(self):
@@ -37,14 +38,28 @@ running_category = Category("Running", "All your running needs", [])
 baseball_category = Category("Baseball", "Braves Fans Only", [])
 basketball_category = Category("Basketball", "Indoor and outdoor products", [])
 football_category = Category("Football", "The American kind", [])
+soccer_category = Category("Soccer", "The real football", [])
 
-sports_store = Store("The Dugout", ["Running", "Baseball", "Basketball"])
-grocery_store = Store("Trader Joe's", ["Dairy", "Meat", "Poultry"])
+# REPL = Read Evaluate Print Loop
+sports_store = Store("The Dugout", [running_category, baseball_category, basketball_category, football_category, soccer_category])
+choice = -1
 
-
-print(running_category, "\n")
-print(baseball_category, "\n")
-print(basketball_category, "\n")
-print(football_category, "\n")
-print(sports_store, "\n")
-print(grocery_store, "\n")
+print(sports_store)
+print("Type q to quit")
+while True:
+  # Read
+  choice = input("Please choose a category (#): ")
+  try:
+    # Evaluate
+    if (choice == "q"):
+      break
+    choice = int(choice) - 1
+    if choice >= 0 and choice < len(sports_store.categories):
+      chosen_category = sports_store.categories[choice]
+    # Print
+      print(chosen_category, "\n")
+    else:
+      print("The number is out of range.")
+  except ValueError:
+    print("Please enter a valid number.")
+  # Loop

@@ -109,3 +109,13 @@ So we can share attr in classes but what about functions? We have that str funct
 Let's say that soccer balls should print a special message. It would inherit all the methods as well. In the soccer ball class, define the stir function. By creating a stir function inside the child class, it overwrites the parent's stir function. In it, create a promo message for it. When you print the generic product, you will see that it gets the added flair of the promo message on it. 
 
 Essentially what happens is when a function gets called on the soccer ball, it will first try to find that stir function inside itself. If it didn't find it there - if it doesn't exist - then it would look in the parent class for a stir method. If the stir function doesn't exist anywhere, then it will kind of just break. 
+
+If you wanted to call the Product's stir function as well as the SoccerBall's stir function, make a parent_str inside SoccerBall's stir function. You'll want to pull in the super method with the str function. Then, you'll want to call it the original parent stir function and finally add our own. 
+
+At this point, we're working with the parent and child; we're not just completely overwriting what is going on. As you can see, this way still works. If we were to change the parent stir with it's own promo message, then the child classes will also print the parent's promo message. When it comes to our child's promo message, it will render the name, the price, the parent's promo message, and then finally the child's promo message.
+
+Let's define another function on soccer ball called kick and print a message. With that new function, you can add another soccer ball instance calling kick. Sneaker won't have that kick function because the kick function is inside the soccer ball class, not the Product class.
+
+```
+Stopping Point before discussing the Module Project: 1:15:00
+```

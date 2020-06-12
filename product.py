@@ -17,7 +17,7 @@ class Product:
     self.discount = discount
 
   def __str__(self):
-    return f"{self.name}: ${self.price}"
+    return f"{self.name}: ${self.price} Great Deal!"
 
 # Child Class OR Subclass
 # The children classes of the parent class are referred to as Sibling classes
@@ -28,6 +28,11 @@ class Sneaker(Product):
     self.shoe_size = shoe_size
     self.brand = brand
     self.color = color
+
+  def __str__(self):
+    # If you didn't want to use the parent's stir function, you just wouldn't call it at all.
+    parent_str = super().__str__()
+    return f"{parent_str}"
 
 # class SoccerBall(Product):
 #   def __init__(self, name, price, material):
@@ -42,7 +47,13 @@ class SoccerBall(Product):
     self.material = material
 
   def __str__(self):
+    # If you didn't want to use the parent's stir function, you just wouldn't call it at all.
+    #parent_str = super().__str__()
+    #return f"{parent_str} WILSOOOOOOOOONNNNN!!!"
     return f"{self.name}: ${self.price} WILSOOOOOOOOONNNNN!!!"
+
+  def kick(self):
+    print("The ball flew away!")
 
 #instances
 nike_free = Sneaker("Nike Free", "100", "10", "Nike", "Lime Green")
@@ -61,3 +72,4 @@ print(soccer_ball.discount)
 print(generic_product)
 print(nike_free)
 print(soccer_ball)
+soccer_ball.kick() #yes, this will print.

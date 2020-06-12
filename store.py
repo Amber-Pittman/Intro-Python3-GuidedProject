@@ -42,18 +42,20 @@ soccer_category = Category("Soccer", "The real football", [])
 
 # REPL = Read Evaluate Print Loop
 sports_store = Store("The Dugout", [running_category, baseball_category, basketball_category, football_category, soccer_category])
-choice = -1
+choice = -1 # indexes start at 0, so if you type in 2, 
+            # you'll get the first one on the list
 
 print(sports_store)
 print("Type q to quit")
 while True:
   # Read
   choice = input("Please choose a category (#): ")
+  # Loop
   try:
     # Evaluate
     if (choice == "q"):
       break
-    choice = int(choice) - 1
+    choice = int(choice) - 1 
     if choice >= 0 and choice < len(sports_store.categories):
       chosen_category = sports_store.categories[choice]
     # Print
@@ -62,4 +64,3 @@ while True:
       print("The number is out of range.")
   except ValueError:
     print("Please enter a valid number.")
-  # Loop
